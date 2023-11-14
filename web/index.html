@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="scroll-behavior: smooth" scroll-behavior="smooth" lang="en">
+<head>
+    <base href="/"/>
+    <meta charset="utf-8"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body id="body">
+<div class="loading">
+    <span class="mif-spinner2 ani-pulse"></span>
+</div>
+<div class="sections section-one">
+    <form id="form" data-role="validator" action="javascript:">
+        <h1>Анкета</h1>
+        <input type="text" data-role="materialinput"
+               data-icon="<span class='mif-user'>"
+               data-label="Име"
+               data-informer="Моля въведете име"
+               data-validate="required"
+               placeholder="Моля въведете име">
+        <input type="text" data-role="materialinput"
+               data-icon="<span class='mif-user'>"
+               data-label="Фамилия"
+               data-validate="required"
+               data-informer="Моля въведете фамилия"
+               placeholder="Моля въведете фамилия">
+
+        <input type="email" data-role="materialinput"
+               data-icon="<span class='mif-envelop'>"
+               data-label="Email"
+               data-informer="Моля въведете email"
+               data-validate="required email"
+               placeholder="Моля въведете email"
+
+        >
+        <div class="flex button-wrapper">
+            <button class="mt-2 button primary rounded">Запази</button>
+        </div>
+    </form>
+</div>
+
+<div class="sections section-two">
+    <div>
+        <div class="texts">
+            <h1>Текстове</h1>
+            <ul data-role="drag-items">
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 1</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 2</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 3</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 4</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 5</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 6</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 7</li>
+                <li class="drag-texts"><span   data-role="hint" data-hint-text="This is a hinted button" class="mif-info mr-1"></span>Цитат 8</li>
+            </ul>
+        </div>
+
+
+        <div class="drag-wrapper">
+            <div class="drag drag-one">
+                <h4>Избор 1</h4>
+                <ul data-role="drag-items">
+                </ul>
+            </div>
+            <div class="drag drag-one">
+                <h4>Избор 2</h4>
+                <ul data-role="drag-items">
+                </ul>
+            </div>
+            <div class="drag drag-one">
+                <h4>Избор 3</h4>
+                <ul data-role="drag-items">
+                </ul>
+            </div>
+            <div class="drag drag-one">
+                <h4>Избор 4</h4>
+                <ul data-role="drag-items">
+                </ul>
+            </div>
+            <div class="drag drag-one">
+                <h4>Избор 5</h4>
+                <ul data-role="drag-items">
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
