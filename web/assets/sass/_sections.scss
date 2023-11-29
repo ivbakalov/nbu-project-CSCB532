@@ -1,18 +1,25 @@
+
+
 .sections {
   display: flex;
   align-content: center;
   justify-content: center;
   flex-wrap: wrap;
-  height: 100vh;
+  height: inherit;
+  width: 100%;
+  max-width: 1600px;
+  padding: 0 15px;
+  margin: 0 auto;
+
 
   h1 {
     font-size: 3rem;
+    font-weight: 400;
+    border-bottom: 1px solid var(--main-color);
   }
 
   .button-wrapper {
-    display: flex;
-    width: 100%;
-
+    text-align: right;
     button {
       margin-left: auto;
     }
@@ -24,27 +31,51 @@
   }
 
 
-  &.section-two > div {
+  &.section-2 > div {
     width: calc(100% - 30px);
     max-width: 1600px;
   }
 
-  //&.section-one {
-  //  background: wheat;
-  //}
 
+  input > span {
+    display: none;
+  }
+
+  input[type="email"].invalid {
+    &::after {
+      content: 'blqqqq';
+      position: absolute;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 50px;
+    }
+      //
+      //color: orangered!important;
+      //border: 1px solid red!important;
+
+  }
 
 }
 
+.gender-title-wrapper {
+  border-bottom: 1px solid var(--main-color);
+}
+.section-2, .section-3 {
+  display: none;
+}
 
 .drag-wrapper {
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
 
   .drag {
     width: calc(100%/5 - 6px);
     min-height: 200px;
-    border: 1px dashed grey;
+    border: 1px dashed var(--main-color);
     position: relative;
     border-radius: 2px;
     display: flex;
@@ -53,7 +84,7 @@
     flex-wrap: wrap;
 
     h4 {
-      color: grey
+      color: var(--main-color)
     }
 
     ul {
@@ -67,29 +98,41 @@
 }
 
 
-
-
 .texts {
-
   ul {
     display: flex;
     width: 100%;
+    //height: calc(100vh - 600px);
     margin-left: 0;
-    justify-content: space-between;
+    position: relative;
   }
 }
 
 li.drag-texts {
   list-style: none;
-  font-size: 1.3rem;
   display: flex;
-  align-content: center;
+  align-items: center;
   flex-wrap: nowrap;
+  background: var(--main-color);
+  border-radius: 18px;
+  margin: 5px;
+  color: var(--main-bg-color);
+  cursor: move;
+  font-size: 1rem;
+  padding: 5px 10px;
+
+  p::first-letter {
+    color: var(--main-bg-color);
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
 
   .mif-info {
-    top: 6px;
+    background: transparent;
     color: orange;
     cursor: pointer;
+    border: none;
   }
 }
 
@@ -99,3 +142,41 @@ li.drag-texts {
   border: 1px dashed grey;
   border-radius: 2px;
 }
+
+.validation {
+  display: none;
+  font-size: 0.9rem;
+  position: absolute;
+  left: 30px;
+  bottom: 31px;
+  color: brown;
+  background: var(--main-bg-color);
+  width: 100%;
+}
+
+.invalid + .icon + .informer {
+  display: none;
+}
+
+
+.dialog {
+  &.shadow-on {
+    overflow-y: scroll;
+    width: 80% !important;
+    max-width: 800px!important;
+    color: var(--main-bg-color);
+
+    p::first-letter {
+      color: var(--main-bg-color);
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 991px) {
+  .sections {
+    height: 100vh;
+  }
+}
+

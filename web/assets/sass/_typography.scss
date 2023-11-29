@@ -1,5 +1,17 @@
 html, body {
-  font-size: 14px;
+  font-size: 16px;
 }
+
+p {
+  line-height: 1.5;
+  margin: 0;
+
+  &::first-letter {
+    font-size: 1.9rem;
+    font-weight: 300;
+    color: var(--main-color);
+  }
+}
+
 
 //write me a function that takes a number and returns the number multiplied by 2

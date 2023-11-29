@@ -1,37 +1,51 @@
 
-// import {userForm} from "./forms/user-form";
-// import $ from "jquery";
-// import fullpage from "fullpage.js/dist/fullpage"
-// import metro from "metro4/build"
-
-// function blq(event) {
-//     event.preventDefault();
-//     console.log('blq');
-// }
+import AOS from 'aos';
+import {
+  languagesSelect,
+  nationalitySelect,
+  submitFormOne,
+  submitFormTwo,
+} from "./user-form";
 
 
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    setTimeout(() => {
-        const preloader = document.querySelector('.loading');
-        preloader.style.display = 'none';
-    }, 2000)
-
-    const section1 = document.querySelector('.section-one');
-    const section2 = document.querySelector('.section-two');
-
-    section2.style.display = 'none';
+document.addEventListener("DOMContentLoaded", () => {
 
 
+  setTimeout(() => {
+    const preloader = document.querySelector(".loading");
+    preloader.style.display = "none";
+  }, 5);
 
-
-    let form = document.getElementById('form');
-
-    form.addEventListener('submit', (event) => {
-        section1.style.display = 'none';
-        section2.style.display = 'flex';
-
-    })
-
+  nationalitySelect();
+  languagesSelect();
+  submitFormOne();
+  submitFormTwo();
+  // addBubbles();
 });
+
+
+
+AOS.init();
+
+// function randomAddLiElements() {
+//     const winWidth = window.innerWidth;
+//     const winHeight = window.innerHeight;
+//
+//     document.querySelectorAll('.drag-texts').forEach((list) => {
+//         // shortcut! the current div in the list
+//
+//         // get random numbers for each element
+//        const randomTop = getRandomNumber(0, winHeight);
+//        const randomLeft = getRandomNumber(0, winWidth);
+//
+//         // update top and left position
+//         list.style.top = randomTop +"px";
+//         list.style.left = randomLeft +"px";
+//     })
+//
+//     function getRandomNumber(min, max) {
+//
+//         return Math.random() * (max - min) + min;
+//
+//     }
+// }

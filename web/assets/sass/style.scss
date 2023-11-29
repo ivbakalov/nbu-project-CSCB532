@@ -2,8 +2,48 @@
 @import "typography";
 @import "sections";
 @import "loading";
-
-
+@import "colors";
+@import "animations";
+@import "icons-iso-png";
 
 @import "metro4/build/metro.css";
 @import "metro4/build/icons.css";
+
+
+body {
+  background: var(--main-bg-color);
+  color: var(--main-color);
+
+
+  .input-material.with-icon .icon {
+    color: var(--main-color);
+    opacity: 1;
+  }
+
+  .input-material input::-webkit-input-placeholder {
+    color: var(--main-color);
+  }
+
+  .button.primary, .command-button.primary {
+    background-color: var(--main-color);
+    color: var(--main-bg-color);
+    transition: all 0.3s ease-in-out;
+    border-color: var(--main-color)!important;
+    &:hover {
+      background-color: var(--main-bg-color);
+      color: var(--main-color);
+    }
+
+  }
+
+
+  .input-material input{
+    color: var(--main-color);
+  }
+
+  .select .option-list a {
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+  }
+}
