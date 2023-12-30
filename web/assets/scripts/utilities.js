@@ -12,6 +12,8 @@ export function nextSlide() {
     setTimeout(() => {
         changeCSSVariable('--main-bg-color', colorsArray[slide - 1]);
     }, 400)
+
+    return slide;
 }
 
 export function changeCSSVariable(variableName, newValue) {

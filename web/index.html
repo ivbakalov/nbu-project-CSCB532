@@ -36,25 +36,12 @@
         </div>
         <div class="w-100 w-50-md d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
             <form class="w-100 w-75-md" id="form-1" data-role="validator" action="javascript:">
-
-                <!--        <input type="text" data-role="materialinput"-->
-                <!--               data-icon="<span class='mif-user'>"-->
-                <!--               data-label="Име"-->
-                <!--               data-informer="Моля въведете име"-->
-                <!--               data-validate="required"-->
-                <!--               placeholder="Моля въведете име">-->
-                <!--        <input type="text" data-role="materialinput"-->
-                <!--               data-icon="<span class='mif-user'>"-->
-                <!--               data-label="Фамилия"-->
-                <!--               data-validate="required"-->
-                <!--               data-informer="Моля въведете фамилия"-->
-                <!--               placeholder="Моля въведете фамилия">-->
-
                     <div class="flex w-100 ml-auto mr-auto">
                         <input type="email" data-role="materialinput"
                                class="mail-input"
                                data-icon="<span class='mif-envelop'>"
                                data-label="Email"
+                               data-form-name="email"
                                data-informer="Enter an email address"
                                data-validate="required email"
                                placeholder="Enter an email address"
@@ -91,13 +78,17 @@
         <div class="w-100 w-50-md d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
         <form class="w-100 w-75-md" id="form-2" data-role="validator" action="javascript:">
             <div class="d-flex-md mt-3">
-            <select  class="nationality-select mr-3-md">
-            </select>
-            <select  class="mt-2 mt-0-md languages-select">
-            </select>
+            <select class="nationality-select mr-3-md" data-form-name="country"></select>
+
+            <div class="mt-2 mt-0-md w-100 section-2-select">
+                <select class="languages-select" data-form-name="nativeLanguage"></select>
+                <span class="required">Required *</span>
+                <span class="validation languages-validation">Please provide a value!</span>
+            </div>
+
             </div>
             <div class="d-flex-md mt-3">
-                <select class="mr-3-md" data-role="select">
+                <select class="mr-3-md" data-role="select" data-form-name="englishLevel">
                     <option value="">English level</option>
                     <option value="0">0 - No Proficiency</option>
                     <option value="1">1 - Elementary Proficiency</option>
@@ -107,7 +98,7 @@
                     <option value="5">5 - Native / Bilingual Proficiency</option>
                 </select>
 
-                <select class="mt-2 mt-0-md" data-role="select">
+                <select class="mt-2 mt-0-md" data-role="select" data-form-name="education">
                     <option value="">Highest completed education level</option>
                     <option value="0">High School</option>
                     <option value="1">Bachelors Degree</option>
@@ -119,19 +110,28 @@
             <div class="mt-3 text-right">
                 <div class="gender-title-wrapper"><span>Gender</span></div>
                 <input type="radio"
+                       name="gender-radio"
                        data-role="radio"
                        data-style="2"
+                       data-index="0"
                        data-caption="Male"
+                       data-form-name="gender"
                        data-cls-check="myCheck">
                 <input type="radio"
+                       name="gender-radio"
                        data-role="radio"
+                       data-index="1"
                        data-style="2"
                        data-caption="Female"
+                       data-form-name="gender"
                        data-cls-check="myCheck">
                 <input type="radio" checked
+                       name="gender-radio"
                        data-role="radio"
+                       data-index="2"
                        data-style="2"
                        data-caption="Prefer not to say"
+                       data-form-name="gender"
                        data-cls-check="myCheck">
             </div>
             <div class="flex button-wrapper w-100">
@@ -142,12 +142,9 @@
     </div>
 </div>
 
-
-
 <div class="sections section-3 pt-5 pb-5">
-    <div>
-        <h1>Text-Emotion Survey</h1>
-        <div>
+        <div class="title">
+            <h1>Text-Emotion Survey</h1>
           <p>
               Click on each text to expand and read.
               Group the texts by how similar they are according to the emotions they evoked in you. The groups are not labeled intentionally, as the texts may invoke different emotions in each reader.
@@ -155,286 +152,35 @@
           </p>
         </div>
 
-        <div class="texts">
-            <ul class="bubble-boundary" data-role="drag-items">
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-1')"></button><p>“Shuden!” a voice said...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-2')"></button><p>The girl was lying...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-3')"></button><p>At that moment Gandalf...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-4')"></button><p>The room in which the boys...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-5')"></button><p>Sarene stepped off...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-6')"></button><p>The memory was fresh, only...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-7')"></button><p>Little Sarene, all grown...</p></li>
-                <li class="drag-texts bubble"><button class="pl-0 mif-info mr-1" onfocus="Metro.dialog.open('#dialog-8')"></button><p>Stephanie hung up and...</p></li>
-            </ul>
-        </div>
-    </div>
+        <div class="texts"></div>
 
     <div class="drag-wrapper">
         <div class="drag drag-one">
             <h4>Drop here</h4>
-            <ul data-role="drag-items">
+            <ul data-role="drag-items" data-text-group-id="1" class="drag-items-moved-target">
             </ul>
         </div>
         <div class="drag drag-one">
             <h4>Drop here</h4>
-            <ul data-role="drag-items">
+            <ul data-role="drag-items" data-text-group-id="2" class="drag-items-moved-target">
             </ul>
         </div>
         <div class="drag drag-one">
             <h4>Drop here</h4>
-            <ul data-role="drag-items">
+            <ul data-role="drag-items" data-text-group-id="3" class="drag-items-moved-target">
             </ul>
         </div>
         <div class="drag drag-one">
             <h4>Drop here</h4>
-            <ul data-role="drag-items">
+            <ul data-role="drag-items" data-text-group-id="4" class="drag-items-moved-target">
             </ul>
         </div>
         <div class="drag drag-one">
             <h4>Drop here</h4>
-            <ul data-role="drag-items">
+            <ul data-role="drag-items" data-text-group-id="5" class="drag-items-moved-target">
             </ul>
         </div>
     </div>
-
 </div>
-
-
-
-
-
-<div class="dialog" data-role="dialog" id="dialog-1">
-    <div class="dialog-content">
-       <p>
-           "“Shuden!” a voice said. “I see that you are lacking your customary circle of admirers.”
-           \n“Good evening, Lord Roial,” Shuden said, bowing slightly as the old man approached. “Yes, thanks to my companionship, I have been able to avoid most of that tonight.”
-           \n“Ah, the lovely Princess Sarene,” Roial said, kissing her hand. “Apparently, your penchant for black has waned.”
-           \n“It was never that strong to begin with, my lord,” she said with a curtsy.
-           \n“I can imagine,” Roial said with a smile. Then he turned back to Shuden. “I had hoped that you wouldn’t realize your good fortune, Shuden. I might have stolen the princess and kept off a few of the leeches myself.”
-           \nSarene regarded the elderly man with surprise.
-           \nShuden chuckled. “Lord Roial is, perhaps, the only bachelor in Arelon whose affection is more sought-after than my own. Not that I am jealous. His Lordship diverts some of the attention from me.”
-           \n “You?” Sarene asked, looking at the spindly old man. “Women want to marry you?” Then, remembering her manners, she added a belated “my lord,” blushing furiously at the impropriety of her words.
-           \nRoial laughed. “Don’t worry about offending me, young Sarene. No man my age is much to look at. My dear Eoldess has been dead for twenty years, and I have no son. My fortune has to pass to someone, and every unmarried girl in the realm realizes that fact. She would only have to indulge me for a few years, bury me, then find a lusty young lover to help spend my money.”
-           \n“My lord is too cynical,” Shuden noted.
-           \n“My lord is too realistic,” Roial said with a snort. “Though I’ll admit, the idea of forcing one of those young puffs into my bed is tempting. I know they all think I’m too old to make them perform their duties as a wife, but they assume wrong. If I were going to let them steal my fortune, I’d at least make them work for it.”
-           \n Shuden blushed at the comment, but Sarene only laughed. “I knew it. You really are nothing but a dirty old man.”
-           \n“Self-professedly so,” Roial agreed with a smile."
-       </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-
-<div class="dialog" data-role="dialog" id="dialog-2">
-    <div class="dialog-content">
-        <p>
-            "The girl was lying, half-dressed, upon it. He had roused her from her sleep, for she raised herself with a hurried and startled look.
-            \n‘Get up!’ said the man.
-            \n‘It is you, Bill!’ said the girl, with an expression of pleasure at his return.
-            \n‘It is,’ was the reply. ‘Get up.’
-            \nThere was a candle burning, but the man hastily drew it from the candlestick, and hurled it under the grate. Seeing the faint light of early day without, the girl rose to undraw the curtain.
-            \n‘Let it be,’ said Sikes, thrusting his hand before her. ‘There’s enough light for wot I’ve got to do.’
-            \n‘Bill,’ said the girl, in the low voice of alarm, ‘why do you look like that at me!’
-            \nThe robber sat regarding her, for a few seconds, with dilated nostrils and heaving breast; and then, grasping her by the head and throat, dragged her into the middle of the room, and looking once towards the door, placed his heavy hand upon her mouth.
-            \n‘Bill, Bill!’ gasped the girl, wrestling with the strength of mortal fear,—‘I—I won’t scream or cry—not once—hear me—speak to me—tell me what I have done!’
-            \n‘You know, you she devil!’ returned the robber, suppressing his breath. ‘You were watched to-night; every word you said was heard.’
-            \n‘Then spare my life for the love of Heaven, as I spared yours,’ rejoined the girl, clinging to him. ‘Bill, dear Bill, you cannot have the heart to kill me. Oh! think of all I have given up, only this one night, for you. You SHALL have time to think, and save yourself this crime; I will not loose my hold, you cannot throw me off. Bill, Bill, for dear God’s sake, for your own, for mine, stop before you spill my blood! I have been true to you, upon my guilty soul I have!’
-            \nThe man struggled violently, to release his arms; but those of the girl were clasped round his, and tear her as he would, he could not tear them away.
-            \n‘Bill,’ cried the girl, striving to lay her head upon his breast, ‘the gentleman and that dear lady, told me to-night of a home in some foreign country where I could end my days in solitude and peace. Let me see them again, and beg them, on my knees, to show the same mercy and goodness to you; and let us both leave this dreadful place, and far apart lead better lives, and forget how we have lived, except in prayers, and never see each other more. It is never too late to repent. They told me so—I feel it now—but we must have time—a little, little time!’
-            \nThe housebreaker freed one arm, and grasped his pistol. The certainty of immediate detection if he fired, flashed across his mind even in the midst of his fury; and he beat it twice with all the force he could summon, upon the upturned face that almost touched his own.
-            \nShe staggered and fell: nearly blinded with the blood that rained down from a deep gash in her forehead; but raising herself, with difficulty, on her knees, drew from her bosom a white handkerchief—Rose Maylie’s own—and holding it up, in her folded hands, as high towards Heaven as her feeble strength would allow, breathed one prayer for mercy to her Maker.
-            \nIt was a ghastly figure to look upon. The murderer staggering backward to the wall, and shutting out the sight with his hand, seized a heavy club and struck her down."
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-
-<div class="dialog" data-role="dialog" id="dialog-3">
-    <div class="dialog-content">
-        <p>
-            "At that moment Gandalf lifted his staff, and crying aloud he smote the bridge before him. The staff broke asunder and fell from his hand. A blinding sheet of white flame sprang up. The bridge cracked. Right at the Balrog’s feet it broke, and the stone upon which it stood crashed into the gulf, while the rest remained, poised, quivering like a tongue of rock thrust out into emptiness.
-
-            \nWith a terrible cry the Balrog fell forward, and its shadow plunged down and vanished. But even as it fell it swung its whip, and the thongs lashed and curled about the wizard’s knees, dragging him to the brink. He staggered and fell, grasped vainly at the stone, and slid into the abyss. ‘Fly, you fools!’ he cried, and was gone.
-            \n
-            \nThe fires went out, and blank darkness fell. The Company stood rooted with horror staring into the pit. Even as Aragorn and Boromir came flying back, the rest of the bridge cracked and fell. With a cry Aragorn roused them.
-            \n
-            \n‘Come! I will lead you now!’ he called. ‘We must obey his last command. Follow me!’
-            \n
-            \nThey stumbled wildly up the great stairs beyond the door, Aragorn leading, Boromir at the rear. At the top was a wide echoing passage. Along this they fled. Frodo heard Sam at his side weeping, and then he found that he himself was weeping as he ran. Doom, doom, doom the drum-beats rolled behind, mournful now and slow; doom!
-            \n
-            \nThey ran on. The light grew before them; great shafts pierced the roof. They ran swifter. They passed into a hall, bright with daylight from its high windows in the east. They fled across it. Through its huge broken doors they passed, and suddenly before them the Great Gates opened, an arch of blazing light.
-            \n
-            \nThere was a guard of orcs crouching in the shadows behind the great door-posts towering on either side, but the gates were shattered and cast down. Aragorn smote to the ground the captain that stood in his path, and the rest fled in terror of his wrath. The Company swept past them and took no heed of them. Out of the Gates they ran and sprang down the huge and age-worn steps, the threshold of Moria.
-            \n
-            \nThus, at last, they came beyond hope under the sky and felt the wind on their faces.
-            \nThey did not halt until they were out of bowshot from the walls. Dimrill Dale lay about them. The shadow of the Misty Mountains lay upon it, but eastwards there was a golden light on the land. It was but one hour after noon. The sun was shining; the clouds were white and high.
-            \n
-            \nThey looked back. Dark yawned the archway of the Gates under the mountain-shadow. Faint and far beneath the earth rolled the slow drum-beats: doom. A thin black smoke trailed out. Nothing else was to be seen; the dale all around was empty. Doom. Grief at last wholly overcame them, and they wept long: some standing and silent, some cast upon the ground. Doom, doom. The drum-beats faded."
-            },
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-
-
-<div class="dialog" data-role="dialog" id="dialog-4">
-    <div class="dialog-content">
-        <p>
-            "The room in which the boys were fed, was a large stone hall, with a copper at one end: out of which the master, dressed in an apron for the purpose, and assisted by one or two women, ladled the gruel at mealtimes. Of this festive composition each boy had one porringer, and no more—except on occasions of great public rejoicing, when he had two ounces and a quarter of bread besides.
-            \nThe bowls never wanted washing. The boys polished them with their spoons till they shone again; and when they had performed this operation (which never took very long, the spoons being nearly as large as the bowls), they would sit staring at the copper, with such eager eyes, as if they could have devoured the very bricks of which it was composed; employing themselves, meanwhile, in sucking their fingers most assiduously, with the view of catching up any stray splashes of gruel that might have been cast thereon. Boys have generally excellent appetites. Oliver Twist and his companions suffered the tortures of slow starvation for three months: at last they got so voracious and wild with hunger, that one boy, who was tall for his age, and hadn’t been used to that sort of thing (for his father had kept a small cook-shop), hinted darkly to his companions, that unless he had another basin of gruel per diem, he was afraid he might some night happen to eat the boy who slept next him, who happened to be a weakly youth of tender age. He had a wild, hungry eye; and they implicitly believed him. A council was held; lots were cast who should walk up to the master after supper that evening, and ask for more; and it fell to Oliver Twist.
-            \nThe evening arrived; the boys took their places. The master, in his cook’s uniform, stationed himself at the copper; his pauper assistants ranged themselves behind him; the gruel was served out; and a long grace was said over the short commons. The gruel disappeared; the boys whispered each other, and winked at Oliver; while his next neighbours nudged him. Child as he was, he was desperate with hunger, and reckless with misery. He rose from the table; and advancing to the master, basin and spoon in hand, said: somewhat alarmed at his own temerity:
-            \n‘Please, sir, I want some more.’
-            \nThe master was a fat, healthy man; but he turned very pale. He gazed in stupified astonishment on the small rebel for some seconds, and then clung for support to the copper. The assistants were paralysed with wonder; the boys with fear.
-            \n‘What!’ said the master at length, in a faint voice.
-            \n‘Please, sir,’ replied Oliver, ‘I want some more.’
-            \nThe master aimed a blow at Oliver’s head with the ladle; pinioned him in his arm; and shrieked aloud for the beadle.
-            \nThe board were sitting in solemn conclave, when Mr. Bumble rushed into the room in great excitement, and addressing the gentleman in the high chair, said, ‘Mr. Limbkins, I beg your pardon, sir! Oliver Twist has asked for more!’
-            \nThere was a general start. Horror was depicted on every countenance.
-            \n‘For MORE!’ said Mr. Limbkins. ‘Compose yourself, Bumble, and answer me distinctly. Do I understand that he asked for more, after he had eaten the supper allotted by the dietary?’
-            \n‘He did, sir,’ replied Bumble. ‘That boy will be hung,’ said the gentleman in the white waistcoat. ‘I know that boy will be hung.’"
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-<div class="dialog" data-role="dialog" id="dialog-5">
-    <div class="dialog-content">
-        <p>
-            Sarene stepped off of the ship to discover that she was a widow. It was shocking news, of course, but not as devastating as it could have been. After all, she had never met her husband. In fact, when Sarene had left her homeland, she and Raoden had only been engaged. She had assumed that the kingdom of Arelon would wait to hold the wedding until she actually arrived. Where she came from, at least, it was expected that both partners would be present when they were married.
-            \n“I never liked that clause in the wedding contract, my lady,” said Sarene’s companion—a melon-sized ball of light hovering at her side. Sarene tapped her foot in annoyance as she watched the packmen load her luggage onto a carriage. The wedding contract had been a fifty-page beast of a document, and one of its many stipulations made her betrothal legally binding if either she or her fiancé died before the actual wedding ceremony.
-            \n“It’s a fairly common clause, Ashe,” she said. “That way, the treaty of a political marriage isn’t voided if something happens to one of the participants. I’ve never seen it invoked.”
-            \n “Until today,” the ball of light replied, its voice deep and its words well enunciated.
-            \n “Until today,” Sarene admitted. “How was I to know Prince Raoden wouldn’t last the five days it took us to cross the Sea of Fjorden?” She paused, frowning in thought. “Quote the clause to me, Ashe. I need to know exactly what it says.”
-            \n“‘If it happens that one member of the aforementioned couple is called home to Merciful Domi before the prearranged wedding time,’” Ashe said, “‘then the engagement will be considered equivalent to marriage in all legal and social respects.’”
-            \n“Not much room for argument, is there?”
-            \n“Afraid not, my lady.” Sarene frowned distractedly, folding her arms and tapping her cheek with her index finger, watching the packmen. A tall, gaunt man directed the work with bored eyes and a resigned expression. The man, an Arelish court attendant named Ketol, was the only reception King Iadon had seen fit to send her. Ketol had been the one to “regretfully inform her” that her fiancé had “died of an unexpected disease” during her journey. He had made the declaration with the same dull, uninterested tone that he used to command the packmen.
-            \n “So,” Sarene clarified, “as far as the law is concerned, I’m now a princess of Arelon.”
-            \n“That is correct, my lady.”
-            \n“And the widowed bride of a man I never met.” “Again, correct.” Sarene shook her head. “Father is going to laugh himself sick when he hears about this. I’ll never live it down.
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-<div class="dialog" data-role="dialog" id="dialog-6">
-    <div class="dialog-content">
-        <p>
-            The memory was fresh, only a few days old: Door moved through the House Without Doors calling “I’m home,” and “Hello?” She slipped from the anteroom to the dining room, to the library, to the drawing room; no one answered. She moved to another room.
-            \n
-            \nThe swimming pool was an indoor Victorian structure, constructed of marble and of cast iron. Her father had found it when he was younger, abandoned and about to be demolished, and he had woven it into the fabric of the House Without Doors. Perhaps in the world outside, in London Above, the room had long been destroyed and forgotten. Door had no idea where any of the rooms of her house were, physically. Her grandfather had constructed the house, taking a room from here, a room from there, all through London, discrete and doorless; her father had added to it.
-            \n
-            \nShe walked along the side of the old swimming pool, pleased to be home, puzzled by the absence of her family. And then she looked down.
-            \n
-            \nThere was someone floating in the water, trailing twin clouds of blood behind him, one from the throat, one from the groin. It was her brother, Arch. His eyes were open wide and sightless. She realized that her mouth was open. She could hear herself screaming.
-            \n
-            \nThey were in the conservatory, watering the plants. First Portia would water a plant, directing the flow of the water toward the soil at the base of the plant, avoiding the leaves and the blossoms. “Water the shoes,” she said to her youngest daughter. “Not the clothes.”
-            \n
-            \nIngress had her own little watering can. She was so proud of it. It was just like her mother’s, made of steel, painted bright green. As her mother finished with each plant, Ingress would water it with her tiny watering can. “On the shoes,” she told her mother. She began laughing, then, spontaneous little-girl laughter.
-            \n
-            \nAnd her mother laughed too, until foxy Mr. Croup pulled her hair back, hard and sudden, and cut her white throat from ear to ear.
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-<div class="dialog" data-role="dialog" id="dialog-7">
-    <div class="dialog-content">
-        <p>
-            Little Sarene, all grown up now,” her father said through the Seon link.
-            \n“All grown up and fully capable of marrying herself off to a corpse.” Sarene laughed weakly. “It’s probably for the best. I don’t think Prince Raoden would have turned out as I had imagined—you should meet his father.”
-            \n “I’ve heard stories. I hoped they weren’t true.”
-            \n “Oh, they are,” Sarene said, letting her dissatisfaction with the Arelish monarch burn away her sorrow. “King Iadon has to be just about the most disagreeable man I have ever met. He barely even acknowledged me before sending me off to, as he put it, ‘go knit, and whatever else you women do.’ If Raoden was anything like his father, then I’m better off this way.”
-            \nThere was a momentary pause before her father responded.
-            \n“Sarene, do you want to come home? I can void the contract if I want, no matter what the laws say.”
-            \nThe offer was tempting—more tempting than she would ever admit. She paused. “No, Father,” she finally said with an unconscious shake of her head. “I have to stay. This was my idea, and Raoden’s death doesn’t change the fact that we need this alliance. Besides, returning home would break tradition—we both know that Iadon is my father now. It would be unseemly for you to take me back into your household.”
-            \n “I will always be your father, ’Ene. Domi curse the customs—Teod will always be open for you.”
-            \n “Thank you, Father,” Sarene said quietly. “I needed to hear that. But I still think I should stay. For now, at least. Besides, it could be interesting. I have an entirely new court full of people to play with.”
-            \n “’Ene …” her father said apprehensively. “I know that tone. What are you planning?”
-            \n“Nothing,” she said. “There’s just a few things I want to poke my nose into before I give up completely on this marriage.”
-            \n There was a pause, and then her father chuckled.
-            \n “Domi protect them—they don’t know what we’ve shipped over there. Go easy on them, Leky Stick. I don’t want to get a note from Minister Naolen in a month telling me that King Iadon has run off to join a Korathi monastery and the Arelish people have named you monarch instead.”
-            \n“All right,” Sarene said with a wan smile. “I’ll wait at least two months then.” Her father burst into another round of his characteristic laughter— a sound that did her more good than any of his consolations or counsels.
-            \n “Wait for a minute, ’Ene,” he said after his laughter subsided. “Let me get your mother—she’ll want to speak with you.” Then, after a moment, he chuckled, continuing, “She’s going to faint dead away when I tell her you’ve already killed off poor Raoden.”
-            \n“Father!” Sarene said—but he was already gone.
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-<div class="dialog" data-role="dialog" id="dialog-8">
-    <div class="dialog-content">
-        <p>
-            Stephanie hung up and grinned.
-            \nShe sat on the couch and was just getting comfy when the house phone rang. She looked at it, resting there on the table at her elbow. Who would be calling? Anyone who knew Gordon had died wouldn’t be calling, because they’d know he had died, and she didn’t really want to be the one to tell anyone who didn’t know. It could be her parents—but then why didn’t they just call her mobile? Figuring that as the new owner of the house it was her responsibility to answer her own phone, Stephanie picked it up.
-            \n“Hello?” Silence. “Hello?” Stephanie repeated.
-            \n“Who is this?” came a man’s voice.
-            \n“I’m sorry,” Stephanie said, “who are you looking for?”
-            \n“Who is this?” responded the voice, more irritably this time.
-            \n“If you’re looking for Gordon Edgley,” Stephanie said, “I’m afraid that he’s—”
-            \n“I know Edgley’s dead,” snapped the man. “Who are you? Your name?”
-            \nStephanie hesitated. “Why do you want to know?” she asked.
-            \n“What are you doing in that house? Why are you in his house?”
-            \n“If you want to call back tomorrow—”
-            \n“I don’t want to, all right? Listen to me, girlie: If you mess up my master’s plans, he will be very displeased, and he is not a man you want to displease—you got that? Now tell me who you are!”
-            \nStephanie realized her hands were shaking. She forced herself to calm down, and quickly found anger replacing her nervousness. “My name is none of your business,” she said. “If you want to talk to someone, call back tomorrow at a reasonable hour.”
-            \n“You don’t talk to me like that,” the man hissed.
-            \n“Good night,” Stephanie said firmly.
-            \n“You do not talk to me like—” But Stephanie was already putting the phone down.
-            \nSuddenly the idea of spending the whole night here wasn’t as appealing as it had first seemed. She considered calling her parents, then scolded herself for being so childish. No need to worry them, she thought; no need to worry them about something so— Someone pounded on the front door.
-            \n“Open up!” came the man’s voice between the pounding. Stephanie got to her feet, staring through to the hall beyond the living room. She could see a dark shape behind the frosted glass around the front door. “Open the damn door!”
-            \nStephanie backed up to the fireplace, her heart pounding in her chest. He knew she was in here—there was no use pretending that she wasn’t—but maybe if she stayed really quiet, he’d give up and go away. She heard him cursing, and the pounding grew so heavy that the front door rattled under the blows.
-            \n“Leave me alone!” Stephanie shouted.
-            \n “Open the door!”
-            \n“No!” she shouted back. She liked shouting; it disguised her fear. “I’m calling the police! I’m calling the police right now!”
-            \nThe pounding stopped immediately, and she saw the shape move away from the door. Was that it? Had she scared him away? She thought of the back door—was it locked? Of course it was locked—it had to be locked. But she wasn’t sure, she wasn’t certain. She grabbed a poker from the fireplace and was reaching for the phone when she heard a knock on the window beside her. She cried out and jumped back. The curtains were open, and outside the window was pitch-black. She couldn’t see a thing.
-            \n“Are you alone in there?” came the voice. It was teasing now, playing with her.
-            \n“Go away,” she said loudly, holding up the poker so that he could see it. She heard the man laugh.
-            \n“What are you going to do with that?” he asked from outside.
-            \n“I’ll break your head open with it!” Stephanie screamed at him, fear and fury bubbling inside her. She heard him laugh again.
-            \n“I just want to come in,” he said. “Open the door for me, girlie. Let me come in.”
-            \n“The police are on their way,” she said.
-            \n“You’re a liar.” Still she could see nothing beyond the glass, and he could see everything.
-            \nShe snatched the phone from its cradle.
-            \n“Don’t do that,” came the voice.
-            \n“I’m calling the police.”
-            \n“The road’s closed, girlie. You call them, I’ll break down that door and kill you hours before they get here.”
-            \nFear became terror and Stephanie froze. She was going to cry. She could feel the tears welling up inside her. She hadn’t cried in years. “What do you want?” she said to the darkness. “Why do you want to come in?”
-            \n“It’s got nothing to do with me, girlie. I’ve just been sent to pick something up. Let me in; I’ll look around, get what I came here for, and leave. I won’t harm a pretty little hair on your pretty little head, I promise. Now you just open that door right this second.”
-            \nStephanie gripped the poker in both hands and shook her head. She was crying now, tears rolling down her cheeks.“No,” she said.
-            \nShe screamed as a fist smashed through the window, showering the carpet with glass. She stumbled back as the man started climbing in, glaring at her with blazing eyes, unmindful of the glass that cut into him. The moment his foot touched the floor inside the house, Stephanie bolted out of the room and over to the front door, fumbling at the lock.
-            \nStrong hands grabbed her from behind. She screamed again as she was lifted off her feet and carried back. She kicked out, slamming a heel into his shin. The man grunted and let go. Stephanie twisted, trying to swing the poker into his face, but he caught it and pulled it from her grasp. One hand went to her throat, and Stephanie gagged, unable to breathe as the man forced her back into the living room. He pushed her into an armchair and leaned in on her. No matter how hard she tried, she could not break his grip.
-            \n“Now then,” the man said, his mouth contorting into a sneer, “why don’t you just give me the key, little girlie?
-        </p>
-    </div>
-    <div class="dialog-actions">
-        <button class="button primary js-dialog-close">Close</button>
-    </div>
-</div>
-
-
-
 </body>
 </html>

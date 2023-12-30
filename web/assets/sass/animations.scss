@@ -13,63 +13,85 @@
 }
 
 .section-3.animation-show {
-  display: block;
+  display: flex;
   animation: slideUpShow 0.5s ease-in-out forwards;
   animation-delay: 400ms;
 }
 
-.bubble {
-  opacity: 0;
-  transform: scale(0)
+.bubble-boundary {
+  min-height: 70px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+
+  &.animations {
+    .bubble {
+      &:not(.dragged-item) {
+        opacity: 0;
+        transform: scale(0)
+      }
+    }
+  }
 }
 
-.bubble:nth-child(1) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 200ms;
-}
+.bubble-boundary {
+  &.animations {
+    .bubble:not(.dragged-item):nth-child(1) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 200ms;
+    }
 
-.bubble:nth-child(3) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 300ms;
-}
+    .bubble:not(.dragged-item):nth-child(3) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 300ms;
+    }
 
-.bubble:nth-child(6) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 450ms;
-}
+    .bubble:not(.dragged-item):nth-child(6) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 450ms;
+    }
 
-.bubble:nth-child(4) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 650ms;
-}
+    .bubble:not(.dragged-item):nth-child(4) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 650ms;
+    }
 
-.bubble:nth-child(8) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 800ms;
-}
+    .bubble:not(.dragged-item):nth-child(8) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 800ms;
+    }
 
-.bubble:nth-child(5) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 950ms;
-}
+    .bubble:not(.dragged-item):nth-child(5) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 950ms;
+    }
 
-.bubble:nth-child(2) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 1050ms;
-}
+    .bubble:not(.dragged-item):nth-child(2) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 1050ms;
+    }
 
-.bubble:nth-child(7) {
-  animation: pop-in 0.8s ease-in-out forwards;
-  animation-delay: 1200ms;
+    .bubble:not(.dragged-item):nth-child(7) {
+      animation: pop-in 0.8s ease-in-out forwards;
+      animation-delay: 1200ms;
+    }
+  }
 }
-
 
 
 
 @keyframes pop-in {
-  0% { opacity: 0;transform: scale(0.1); }
-  54% { opacity: 1;transform: scale(1.3); }
-  100% { opacity: 1;transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  54% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes slideLeftHide {
@@ -91,7 +113,7 @@
   }
 }
 
-@keyframes slideUpShow{
+@keyframes slideUpShow {
   0% {
     transform: translateY(100%);
   }

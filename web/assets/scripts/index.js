@@ -1,16 +1,7 @@
-
-import AOS from 'aos';
-import {
-  languagesSelect,
-  nationalitySelect,
-  submitFormOne,
-  submitFormTwo,
-} from "./user-form";
-
+import AOS from "aos";
+import { languagesSelect, nationalitySelect, submitForm } from "./user-form";
 
 document.addEventListener("DOMContentLoaded", () => {
-
-
   setTimeout(() => {
     const preloader = document.querySelector(".loading");
     preloader.style.display = "none";
@@ -18,12 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nationalitySelect();
   languagesSelect();
-  submitFormOne();
-  submitFormTwo();
+  void submitForm("form-1");
+
   // addBubbles();
 });
-
-
 
 AOS.init();
 
