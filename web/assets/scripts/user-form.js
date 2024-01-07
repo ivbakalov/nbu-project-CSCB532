@@ -4,58 +4,59 @@ import { nextSlide } from "./utilities";
 import { http } from "./http";
 import { User } from "./user";
 import { survey } from "./survey";
+import { Loading } from "./loading";
 
-export async function submitForm(id) {
-  let form = document.getElementById(id);
+export async function formOne() {
+  let form = document.getElementById("form-1");
 
-  if (form) {
-    await getUser();
+  if (
+    localStorage.getItem("email") &&
+    (await getUser(localStorage.getItem("email")))
+  ) {
+    nextSlide();
+    nextSlide();
+  }
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      form.dataset.isValid = "true";
-      if (id === "form-2") {
-        validateSelect(form);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    form.dataset.isValid = "true";
+
+    const email =
+      document.querySelector("[data-form-name='email']").value ||
+      localStorage.getItem("email");
+
+    if (validateForm(form) === "true") {
+      nextSlide();
+
+      if (await getUser(email)) {
+        console.log("user exists");
+        nextSlide();
       }
+    }
+  });
+}
 
-      document.querySelectorAll("input").forEach((input) => {
-        if (input.closest(".validation")) {
-          input.closest(".validation").style.display = "none";
-        }
+export async function formTwo() {
+  let form = document.getElementById("form-2");
 
-        if (input.classList.contains("invalid")) {
-          document.querySelector(`.${input.type}-validation`).style.display =
-            "block";
-
-          form.dataset.isValid = "false";
-        }
+  document
+    .querySelectorAll(".languages-select .option-list li")
+    .forEach((li) => {
+      li.addEventListener("click", (event) => {
+        setTimeout(() => {
+          validateSelect(form);
+        });
       });
-
-      if (form.dataset.isValid === "true") {
-        await getUser();
-
-        if (id === "form-2") {
-          registerUser();
-        }
-      }
     });
 
-    if (id === "form-2") {
-      document
-        .querySelectorAll(".languages-select .option-list li")
-        .forEach((li) => {
-          li.addEventListener("click", (event) => {
-            setTimeout(() => {
-              validateSelect(form);
-            });
-          });
-        });
-    }
-  }
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    form.dataset.isValid = "true";
 
-  if (id === "form-3") {
-    survey();
-  }
+    if (validateForm(form) === "true" && validateSelect(form) === "true") {
+      registerUser();
+    }
+  });
 }
 
 export function validateSelect(form) {
@@ -69,6 +70,8 @@ export function validateSelect(form) {
     document.querySelector(".languages-validation").style.display = "none";
     form.dataset.isValid = "true";
   }
+
+  return form.dataset.isValid;
 }
 
 export function languagesSelect() {
@@ -117,6 +120,7 @@ function convertToProperTypes(data) {
 }
 
 function registerUser() {
+  const loading = new Loading();
   let data = {};
 
   document.querySelectorAll("[data-form-name]").forEach((element) => {
@@ -128,51 +132,79 @@ function registerUser() {
         data = { ...data, [formName]: convertToProperTypes(index)[formName] };
       }
     } else {
-      data = {
-        ...data,
-        [formName]: convertToProperTypes(element.value)[formName],
-      };
+      const convertedData = convertToProperTypes(element.value)[formName];
+
+      if (convertedData !== "" && convertedData !== undefined) {
+        data = {
+          ...data,
+          [formName]: convertedData,
+        };
+      }
     }
   });
 
   http(`user`, "POST", data)
     .then((response) => {
       if (response) {
-        console.log(response);
         localStorage.setItem("email", response.email);
-        User.instance.set(response);
-        void submitForm(`form-${nextSlide()}`);
 
-        console.log(User.instance.value);
+        User.instance.set(response);
+        nextSlide();
+        void survey();
       }
     })
     .catch((error) => {
       localStorage.removeItem("email");
       User.instance.set({});
       console.log(error);
+    })
+    .finally(() => {
+      setTimeout(() => {
+        loading.hide();
+      }, 200);
     });
 }
 
-async function getUser() {
-  const email =
-    document.querySelector("[data-form-name='email']").value ||
-    localStorage.getItem("email");
+async function getUser(email) {
+  const loading = new Loading();
 
-  if (email && !User.instance.value.email) {
-    return http(`user/${email}`, "GET", "", false)
-      .then((response) => {
-        if (response) {
-          localStorage.setItem("email", email);
-          User.instance.set(response);
-          submitForm(`form-${nextSlide()}`);
-        }
-      })
-      .catch(() => {
-        User.instance.set({ email });
-        localStorage.removeItem("email");
-        submitForm(`form-${nextSlide()}`);
-      });
-  } else if (User.instance.value.email && localStorage.getItem("email")) {
-    void submitForm(`form-${nextSlide()}`);
+  let userResponse = {};
+
+  try {
+    userResponse = await http(`user/${email}`, "GET", "", false);
+
+    if (userResponse) {
+      localStorage.setItem("email", email);
+      User.instance.set(userResponse);
+      void survey();
+    }
+
+    return true;
+  } catch (error) {
+    localStorage.removeItem("email");
+
+    return false;
+  } finally {
+    setTimeout(() => {
+      loading.hide();
+    }, 500);
   }
+}
+
+function validateForm(form) {
+  form.dataset.isValid = "true";
+
+  form.querySelectorAll(`input`).forEach((input) => {
+    if (input.closest(".validation")) {
+      input.closest(".validation").style.display = "none";
+    }
+
+    if (input.classList.contains("invalid")) {
+      form.querySelector(`.${input.type}-validation`).style.display = "block";
+
+      form.dataset.isValid = "false";
+    }
+  });
+
+  return form.dataset.isValid;
 }

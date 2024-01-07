@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="scroll-behavior: smooth" scroll-behavior="smooth" lang="en">
 <head>
+    <title>Text Emotion Survey</title>
     <base href="/"/>
     <meta charset="utf-8"/>
     <meta name="mobile-web-app-capable" content="yes"/>
@@ -11,15 +12,12 @@
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
-<body id="body" class="pt-10 pb-10 pt-0-md pb-0-md">
-<div class="loading">
-    <span class="mif-spinner2 ani-pulse"></span>
-</div>
+<body id="body" class="pb-10 pb-0-md" >
 
 <div class="sections section-1">
-    <div class="d-flex-md flex-content-center">
+    <div class="d-flex-md flex-content-center mt-0-md mt-8">
         <div class="w-100 w-50-md">
-            <h1>Text-Emotion Survey</h1>
+            <h2>Text-Emotion Survey</h2>
             <p>Text evokes emotions in its readers.</p>
             <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary works.</p>
             <p>
@@ -60,7 +58,7 @@
 <div class="sections section-2">
     <div class="w-100 d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
         <div class="w-100 w-50-md">
-            <h1>Text-Emotion Survey</h1>
+            <h2>Text-Emotion Survey</h2>
             <p>Text evokes emotions in its readers.</p>
             <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary works.</p>
             <p>
@@ -142,44 +140,75 @@
     </div>
 </div>
 
-<div class="sections section-3 pt-5 pb-5">
+<div class="sections section-3 ">
+    <button class="mt-1 button primary rounded text-upper d-flex flex-align-center text-bold logout-button">logout</button>
+    <div class="pb-5">
         <div class="title">
-            <h1>Text-Emotion Survey</h1>
-          <p>
-              Click on each text to expand and read.
-              Group the texts by how similar they are according to the emotions they evoked in you. The groups are not labeled intentionally, as the texts may invoke different emotions in each reader.
-              To put texts in the same group drag them to the same container below. You can assign the texts to a maximum of 5 groups (1 to 5). You can change the group you have assigned a text to by dragging it to another container. Your progress is automatically saved on each drop, so you can return later to continue.
-          </p>
+            <h2>Text-Emotion Survey</h2>
+            <p class="text-just">
+                Click on <span class="mif-info"></span> icon to read the full quote.  <br><br>
+                Group the texts by how similar they are according to the emotions they evoked in you. The groups are not labeled intentionally, as the texts may invoke different emotions in each reader.
+                <br>
+                <br>
+                To put texts in the same group drag them to the same container below. You can assign the texts to a maximum of <strong>5 groups (1 to 5)</strong>. You can change the group you have assigned a text to by dragging it to another container. Your progress is automatically saved on each drop, so you can return later to continue.
+            </p>
         </div>
-
         <div class="texts"></div>
+        <div class="drag-wrapper mb-10">
+            <button class="mt-2 button primary rounded open-drag-1 open-drag">1</button>
+            <button class="mt-2 button primary rounded open-drag-2 open-drag">2</button>
+            <button class="mt-2 button primary rounded open-drag-3 open-drag">3</button>
+            <button class="mt-2 button primary rounded open-drag-4 open-drag">4</button>
+            <button class="mt-2 button primary rounded open-drag-5 open-drag">5</button>
+        </div>
+        <div class="drag-wrapper">
+            <div class="drag drag-one">
+                <h4>Drop here</h4>
+                <ul data-role="drag-items" data-text-group-id="1" class="drag-items-moved-target">
+                </ul>
+            </div>
+            <div class="drag drag-two">
+                <h4>Drop here</h4>
+                <ul data-role="drag-items" data-text-group-id="2" class="drag-items-moved-target">
+                </ul>
+            </div>
+            <div class="drag drag-three">
+                <h4>Drop here</h4>
+                <ul data-role="drag-items" data-text-group-id="3" class="drag-items-moved-target">
+                </ul>
+            </div>
+            <div class="drag drag-four">
+                <h4>Drop here</h4>
+                <ul data-role="drag-items" data-text-group-id="4" class="drag-items-moved-target">
+                </ul>
+            </div>
+            <div class="drag drag-five">
+                <h4>Drop here</h4>
+                <ul data-role="drag-items" data-text-group-id="5" class="drag-items-moved-target">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <div class="drag-wrapper">
-        <div class="drag drag-one">
-            <h4>Drop here</h4>
-            <ul data-role="drag-items" data-text-group-id="1" class="drag-items-moved-target">
-            </ul>
-        </div>
-        <div class="drag drag-one">
-            <h4>Drop here</h4>
-            <ul data-role="drag-items" data-text-group-id="2" class="drag-items-moved-target">
-            </ul>
-        </div>
-        <div class="drag drag-one">
-            <h4>Drop here</h4>
-            <ul data-role="drag-items" data-text-group-id="3" class="drag-items-moved-target">
-            </ul>
-        </div>
-        <div class="drag drag-one">
-            <h4>Drop here</h4>
-            <ul data-role="drag-items" data-text-group-id="4" class="drag-items-moved-target">
-            </ul>
-        </div>
-        <div class="drag drag-one">
-            <h4>Drop here</h4>
-            <ul data-role="drag-items" data-text-group-id="5" class="drag-items-moved-target">
-            </ul>
-        </div>
+
+<div class="survey-completed-next pos-fixed">
+    <div class="flex button-wrapper w-100">
+        <button class="button primary rounded complete-survey-btn text-upper d-flex flex-align-center text-bold"> <span class="mif-user-check mif-3x mr-2"></span>  Complete the survey</button>
+    </div>
+</div>
+
+<div class="sections section-4 pt-5 pb-5">
+    <div class="title">
+        <h2>Thank you</h2>
+            <p>
+                for participating in the Text Emotion Survey!
+                Your responses have been recorded.
+            </p>
+            <p>
+               Do you want to participate in another one?
+            </p>
+            <button class="mt-2 button primary rounded text-upper" onclick="window.location.reload()">new survey</button>
     </div>
 </div>
 </body>

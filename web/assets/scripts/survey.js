@@ -1,16 +1,29 @@
 import { User } from "./user";
 import { http } from "./http";
+import { nextSlide } from "./utilities";
+import { Loading } from "./loading";
 
-export function survey() {
+export async function survey() {
+  openDraggableMobile();
+
   if (User.instance.value.surveys && User.instance.value.surveys.length > 0) {
     const activeSurvey = User.instance.value.surveys.find(
-      (survey) => !survey.isCompleted
+      (survey) => !survey.completed
     );
+
+    User.instance.set({ ...User.instance.value, activeSurvey });
+
+    if (
+      activeSurvey?.groupTextMappings &&
+      activeSurvey.groupTextMappings.filter((group) => group.textGroup === null)
+        ?.length === 0
+    ) {
+      document.querySelector(".survey-completed-next").classList.add("show");
+    }
 
     constructQuestions(activeSurvey);
 
     // Select the node that will be observed for mutations
-    // const targetNode = document.querySelector(".drag-one");
 
     // Options for the observer (which mutations to observe)
     const config = {
@@ -21,17 +34,15 @@ export function survey() {
       subtree: false,
     };
 
-    const callback = (mutationList, observer) => {
+    const callback = async (mutationList, observer) => {
       for (const mutation of mutationList) {
         if (!mutation.target.classList.contains("dragged-item")) {
           const groupTextMappings = [
             {
-              id: mutation.target.dataset.groupTextMappingsId,
-              textGroup: {
-                id: mutation?.target?.parentNode?.dataset?.textGroupId
-                  ? mutation.target.parentNode.dataset.textGroupId
-                  : 6,
-              },
+              id: Number(mutation.target.dataset.groupTextMappingsId),
+              textGroup: mutation.target.parentNode.dataset.textGroupId
+                ? Number(mutation.target.parentNode.dataset.textGroupId)
+                : null,
             },
           ];
 
@@ -41,19 +52,49 @@ export function survey() {
             isCompleted: false,
           };
 
-          void http(
-            `user/${User.instance.value.email}/survey/${mutation.target.dataset.serveyId}`,
-            "PATCH",
-            survey
-          );
+          try {
+            const response = await http(
+              `user/${User.instance.value.email}/survey/${mutation.target.dataset.serveyId}`,
+              "PATCH",
+              survey
+            );
+
+            User.instance.set({
+              ...User.instance.value,
+              activeSurvey: response.surveys.find(
+                (survey) =>
+                  survey.id === Number(mutation.target.dataset.serveyId)
+              ),
+            });
+
+            if (
+              User.instance?.value.activeSurvey?.groupTextMappings &&
+              User.instance?.value.activeSurvey?.groupTextMappings.filter(
+                (group) => group.textGroup === null
+              )?.length === 0
+            ) {
+              document
+                .querySelector(".survey-completed-next")
+                .classList.add("show");
+            } else {
+              document
+                .querySelector(".survey-completed-next")
+                .classList.remove("show");
+            }
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
     };
+
     document.querySelectorAll(".bubble").forEach((dragItem) => {
       const observer = new MutationObserver(callback);
       observer.observe(dragItem, config);
     });
   }
+
+  void completeSurvey();
 }
 
 function constructQuestions(activeSurvey) {
@@ -82,10 +123,10 @@ function constructQuestions(activeSurvey) {
       index
     );
 
-    if (textGroup && textGroup.id) {
+    if (textGroup) {
       document
         .querySelector(
-          `.drag-items-moved-target[data-text-group-id="${textGroup.id}"]`
+          `.drag-items-moved-target[data-text-group-id="${textGroup}"]`
         )
         .append(li);
     } else {
@@ -123,7 +164,7 @@ function addDraggableItems(
   const div = document.createElement("div");
 
   const p = document.createElement("p");
-  p.textContent = `${text.slice(0, 20)}`;
+  p.textContent = `${text.slice(0, 65)}...`;
   div.append(h6, p);
 
   li.append(button, div);
@@ -146,7 +187,7 @@ function addDialogs(text, author, index) {
   dialogTitle.textContent = author;
 
   const dialogText = document.createElement("p");
-  dialogText.textContent = text;
+  dialogText.innerHTML = text.replace(new RegExp("\r?\n", "g"), "<br />");
   dialogActions.classList.add("dialog-actions");
   const closeButton = document.createElement("button");
 
@@ -157,4 +198,44 @@ function addDialogs(text, author, index) {
   dialog.append(dialogContent, dialogActions);
 
   return dialog;
+}
+
+export async function completeSurvey() {
+  document
+    .querySelector(".complete-survey-btn")
+    .addEventListener("click", async () => {
+      document.querySelector(".survey-completed-next").classList.remove("show");
+
+      const loading = new Loading();
+      console.log(User.instance.value.activeSurvey);
+      try {
+        await http(
+          `user/${User.instance.value.email}/survey/${User.instance.value.activeSurvey.id}`,
+          "PATCH",
+          { ...User.instance.value.activeSurvey, completed: true }
+        );
+        nextSlide();
+      } catch (error) {
+      } finally {
+        loading.hide();
+      }
+    });
+}
+
+export function openDraggableMobile() {
+  document.querySelectorAll(".open-drag").forEach((openDrag, index) => {
+    openDrag.addEventListener("click", () => {
+      const allDragItems = document.querySelectorAll(".drag");
+
+      allDragItems.forEach((dragItem, index) => {
+        dragItem.classList.remove("show");
+        document
+          .querySelectorAll(".open-drag")
+          [index].classList.remove("selected");
+      });
+
+      openDrag.classList.add("selected");
+      document.querySelectorAll(".drag")[index].classList.toggle("show");
+    });
+  });
 }

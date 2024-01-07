@@ -18,9 +18,22 @@
   animation-delay: 400ms;
 }
 
+.section-3.animation-hide {
+  display: flex;
+  animation: slideUpShowHide 0.5s ease-in-out forwards;
+  animation-delay: 400ms;
+}
+
+.section-4.animation-show {
+  display: flex;
+  animation: slideLeftShow 0.5s ease-in-out forwards;
+  animation-delay: 400ms;
+}
+
+
+
 .bubble-boundary {
   min-height: 70px;
-  background: rgba(255, 255, 255, 0.2);
   border-radius: 18px;
 
   &.animations {

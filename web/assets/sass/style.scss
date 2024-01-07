@@ -26,6 +26,7 @@ body {
   }
 
   .button.primary, .command-button.primary {
+    box-shadow: none!important;
     background-color: var(--main-color);
     color: var(--main-bg-color);
     transition: all 0.3s ease-in-out;
@@ -33,6 +34,17 @@ body {
     &:hover {
       background-color: var(--main-bg-color);
       color: var(--main-color);
+    }
+  }
+
+
+  .button.secondary {
+    box-shadow: none!important;
+
+    &,
+    &:hover {
+      background: transparent;
+      border: transparent;
     }
 
   }

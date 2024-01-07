@@ -9,9 +9,9 @@
   max-width: 1600px;
   padding: 0 15px;
   margin: 0 auto;
+  min-height: 100vh;
 
-
-  h1 {
+  h1, h2 {
     font-size: 3rem;
     font-weight: 400;
     border-bottom: 1px solid var(--main-color);
@@ -53,19 +53,28 @@
     }
   }
 
+  &.section-4,
+  &.section-3 {
+    p {
+      &:first-letter {
+        font-size: 1rem;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .logout-button {
+    margin-left: auto;
+  }
+
 }
 
 .gender-title-wrapper {
   border-bottom: 1px solid var(--main-color);
 }
 
-.section-2, .section-3 {
-  display: none;
-}
-
 .section-3 {
-  display: flex;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   align-items: center;
   flex-wrap: nowrap;
@@ -76,71 +85,121 @@
   }
 
   .texts {
-    margin-bottom: 20vh;
+    //margin-bottom: 20vh;
+    width: 100%;
+
+    ul {
+      display: block;
+      //align-content: center;
+      //justify-content: center;
+      width: 100%;
+      margin-left: 0;
+      position: relative;
+      //flex-wrap: wrap;
+      height: 350px;
+      align-items: center;
+      padding: 5px;
+      overflow-x: auto;
+      border: 1px dashed white;
+    }
+
+    margin-bottom: 10px;
   }
 
   .drag-wrapper {
     margin-top: auto;
-  }
-}
-
-.drag-wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: calc(100% + 30px);
-  bottom: 10px;
-
-  .drag {
-    width: calc(100% / 5 - 6px);
-    min-height: 200px;
-    border: 1px dashed var(--main-color);
-    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    border-radius: 18px;
-    overflow-y: auto;
-
-    h4 {
-      color: var(--main-color)
-    }
-
-    ul {
-      padding: 10px;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      list-style: none;
-
-    }
-  }
-}
-
-
-.texts {
-  ul {
-    display: flex;
+    justify-content: space-between;
     width: 100%;
-    margin-left: 0;
-    position: relative;
+    bottom: 10px;
+    padding: 0 15px;
+
+
+    .drag
+    {
+      width: calc(100% / 5 - 6px);
+      min-height: 200px;
+      border: 1px dashed var(--main-color);
+      position: relative;
+
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      border-radius: 18px;
+      overflow-y: auto;
+      display: none;
+
+      &.show {
+        display: flex;
+        width: calc(100% - 6px);
+      }
+
+      h4 {
+        color: var(--main-color);
+        text-align: center;
+      }
+
+      ul {
+        padding: 10px;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        list-style: none;
+
+      }
+
+      .drag-texts {
+        height: auto;
+        width: 90%;
+        margin: 5px 0;
+
+        & > div {
+          width: 86%;
+        }
+
+        p {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          width: 99%;
+        }
+      }
+
+
+    }
+
+    .open-drag {
+      width: calc(100% / 5 - 6px);
+      padding: 10px 0;
+      display: flex;
+    }
   }
+
+
 }
+
+.section-2, .section-3, .section-4 {
+  display: none;
+}
+
 
 li {
   &.drag-texts {
     list-style: none;
     background: var(--main-color);
     border-radius: 18px;
-    margin: 5px;
     color: var(--main-bg-color);
     cursor: move;
     font-size: 1rem;
     padding: 10px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    max-height: 59px;
-    width: calc(100% / 8);
+    width: 90%;
+    margin-bottom: 5px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
 
     h6 {
       margin: 0 0 5px 0;
@@ -149,16 +208,16 @@ li {
     }
 
     & > div {
-      p, h6 {
+       h6 {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         width: 98%;
-        height: 17px;
       }
 
       p {
-        line-height: 1;
+        width: 98%;
+        line-height: 1.2;
 
 
         &:first-letter {
@@ -177,6 +236,8 @@ li {
       border: none;
     }
   }
+
+
 }
 
 .dialog {
@@ -184,6 +245,7 @@ li {
   .dialog-content {
     p {
       line-height: 1.6;
+      text-align: justify;
     }
   }
 
@@ -233,7 +295,7 @@ li {
 .dialog {
   &.shadow-on {
     overflow-y: scroll;
-    width: 80% !important;
+    width: 90% !important;
     max-width: 800px !important;
     color: var(--main-bg-color);
 
@@ -285,9 +347,94 @@ body .select .option-list a {
 }
 
 
-@media screen and (min-width: 991px) {
-  .sections {
-    height: 100vh;
+
+
+@media screen and (min-width: 865px) {
+  .section-3 {
+    .drag-wrapper {
+      .drag {
+        display: flex;
+      }
+
+      .open-drag {
+        display: none;
+      }
+    }
   }
+  li {
+    &.drag-texts {
+      width: calc(75% - 10px);
+    }
+  }
+  .section-3 {
+    .texts {
+      ul {
+        //display: flex;
+      }
+    }
+
+    li {
+      &.drag-texts {
+        margin: 5px;
+        width: calc(50% - 10px);
+      }
+    }
+  }
+
+
+}
+
+@media screen and (min-width: 1200px) {
+  .section-3 {
+    .texts {
+      ul {
+        overflow-x: hidden;
+      }
+    }
+
+    li {
+      &.drag-texts {
+        width: calc(25% - 10px);
+      }
+    }
+  }
+}
+
+.survey-completed-next {
+  transition: top 0.4s ease-in-out;
+  top: -100%;
+  width: 300px;
+  border-radius: 18px !important;
+  margin: 0 auto;
+  min-height: 80px;
+  padding: 10px;
+  display: flex;
+  background: rgba(255, 255, 255, 0.95);
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  left: 0;
+  right: 0;
+
+  h4 {
+    color: var(--main-bg-color);
+    margin-bottom: 4px;
+  }
+  &.show {
+    top: 0;
+  }
+
+  button.button.primary {
+    background-color: transparent!important;
+    border: transparent!important;
+    display: block;
+    margin: 0 auto;
+
+    &:hover {
+      border: 1px solid var(--main-bg-color)!important;
+      color: var(--main-bg-color)!important;
+    }
+  }
+
 }
 

@@ -1,17 +1,29 @@
 import AOS from "aos";
-import { languagesSelect, nationalitySelect, submitForm } from "./user-form";
+import {
+  formOne,
+  formTwo,
+  languagesSelect,
+  nationalitySelect,
+} from "./user-form";
+import { Loading } from "./loading";
+
+const loading = new Loading();
 
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
-    const preloader = document.querySelector(".loading");
-    preloader.style.display = "none";
+    loading.hide();
   }, 5);
 
   nationalitySelect();
   languagesSelect();
-  void submitForm("form-1");
 
-  // addBubbles();
+  void formOne();
+  void formTwo();
+
+  document.querySelector(".logout-button").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.reload();
+  });
 });
 
 AOS.init();
