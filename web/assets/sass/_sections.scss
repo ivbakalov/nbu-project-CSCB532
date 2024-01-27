@@ -342,11 +342,24 @@ li {
   border-color: var(--main-bg-color);
 }
 
+.check-box-agree {
+  input[type=checkbox]:checked~.check {
+    background: var(--main-color);
+    border-color: var(--main-color);
+  }
+
+  .check {
+    border-radius: 18px;
+
+    &:before {
+      border-color: var(--main-bg-color);
+    }
+  }
+}
+
 body .select .option-list a {
   line-height: 100%;
 }
-
-
 
 
 @media screen and (min-width: 865px) {

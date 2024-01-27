@@ -12,7 +12,7 @@ const loading = new Loading();
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     loading.hide();
-  }, 5);
+  }, 500);
 
   nationalitySelect();
   languagesSelect();

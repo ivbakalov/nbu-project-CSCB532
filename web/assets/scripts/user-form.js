@@ -110,12 +110,13 @@ export function nationalitySelect() {
 
 function convertToProperTypes(data) {
   return {
-    country: data.toString(),
-    education: data.toString(),
-    email: data.toString(),
+    country: data?.toString(),
+    education:data?.toString(),
+    email:data?.toString(),
     englishLevel: Number(data),
     gender: Number(data),
-    nativeLanguage: data.toString(),
+    nativeLanguage: data?.toString(),
+    interestedInMoreInfo: true,
   };
 }
 
@@ -126,11 +127,11 @@ function registerUser() {
   document.querySelectorAll("[data-form-name]").forEach((element) => {
     const { formName, index } = element.dataset;
 
-    if (element.type === "checkbox") {
-    } else if (element.type === "radio") {
-      if (element.checked) {
-        data = { ...data, [formName]: convertToProperTypes(index)[formName] };
-      }
+   if (element.type === "radio" || element.type === "checkbox") {
+     if (element.checked) {
+       console.log(formName, element);
+       data = { ...data, [formName]: convertToProperTypes(index)[formName] };
+     }
     } else {
       const convertedData = convertToProperTypes(element.value)[formName];
 
@@ -161,7 +162,7 @@ function registerUser() {
     .finally(() => {
       setTimeout(() => {
         loading.hide();
-      }, 200);
+      }, 500);
     });
 }
 
