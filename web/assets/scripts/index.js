@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.clear();
     window.location.reload();
   });
+
+  document.querySelector(".initial-loading").remove();
 });
 
 AOS.init();

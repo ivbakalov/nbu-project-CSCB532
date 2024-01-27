@@ -59,4 +59,30 @@ body {
     align-items: center;
     padding-left: 12px;
   }
+
+  footer {
+    background: var(--main-color);
+
+
+    padding: 0 30px;
+
+
+    div {
+      height: 60px;
+
+      h5 {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: #11367d!important;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+  }
 }

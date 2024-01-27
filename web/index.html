@@ -12,7 +12,12 @@
     <meta name="format-detection" content="telephone=no"/>
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
 </head>
-<body id="body" class="pb-10 pb-0-md" >
+<div class="initial-loading">
+    <div class="loading">
+        <span class="mif-spinner2 ani-pulse"></span>
+    </div>
+</div>
+<body id="body" >
 
 <div class="sections section-1">
     <div class="d-flex-md flex-content-center mt-0-md mt-8">
@@ -75,6 +80,7 @@
         </div>
         <div class="w-100 w-50-md d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
         <form class="w-100 w-75-md" id="form-2" data-role="validator" action="javascript:">
+            <h3>The native language option is requared!</h3>
             <div class="d-flex-md mt-3">
             <select class="nationality-select mr-3-md" data-form-name="country"></select>
 
@@ -215,5 +221,12 @@
             <button class="mt-2 button primary rounded text-upper" onclick="window.location.reload()">new survey</button>
     </div>
 </div>
+
+<footer class="mt-10 d-flex flex-content-center flex-justify-center flex-wrap">
+<div  class="d-flex flex-content-center flex-wrap">
+    <img class="mr-2" src="/assets/images/nbu.jpeg">
+    <a href="https://www.nbu.bg/" target="_blank" class="pt-1">©2024 New Bulgarian University</a>
+</div>
+</footer>
 </body>
 </html>
