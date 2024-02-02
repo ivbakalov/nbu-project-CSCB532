@@ -160,7 +160,7 @@ function addDraggableItems(
   });
 
   const h6 = document.createElement("h6");
-  h6.textContent = author;
+  //h6.textContent = author;
   const div = document.createElement("div");
 
   const p = document.createElement("p");
@@ -184,7 +184,7 @@ function addDialogs(text, author, index) {
   const dialogActions = document.createElement("div");
   const dialogTitle = document.createElement("h2");
   dialogTitle.classList.add("text-italic");
-  dialogTitle.textContent = author;
+  //dialogTitle.textContent = author;
 
   const dialogText = document.createElement("p");
   dialogText.innerHTML = text.replace(new RegExp("\r?\n", "g"), "<br />");
