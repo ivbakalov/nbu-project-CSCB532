@@ -122,7 +122,11 @@ function convertToProperTypes(data) {
 
 function registerUser() {
   const loading = new Loading();
-  let data = {};
+  const referrer = sessionStorage.getItem("referrer");
+
+  let data = {
+      ...(referrer ? {referrer} : '')
+  };
 
   document.querySelectorAll("[data-form-name]").forEach((element) => {
     const { formName, index } = element.dataset;
@@ -160,6 +164,8 @@ function registerUser() {
       console.log(error);
     })
     .finally(() => {
+      sessionStorage.removeItem("referrer");
+
       setTimeout(() => {
         loading.hide();
       }, 500);
@@ -172,9 +178,11 @@ async function getUser(email) {
   let userResponse = {};
 
   try {
+
     userResponse = await http(`user/${email}`, "GET", "", false);
 
     if (userResponse) {
+      sessionStorage.removeItem("referrer");
       localStorage.setItem("email", email);
       User.instance.set(userResponse);
       void survey();
