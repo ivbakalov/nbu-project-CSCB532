@@ -72,6 +72,7 @@ class ApiController extends AbstractController
             $user->setGender($requestBody["gender"] ?? null);
             $user->setEducation($requestBody["education"] ?? null);
             $user->setInterestedInMoreInfo($requestBody["interestedInMoreInfo"] ?? null);
+            $user->setReferrer($requestBody["referrer"] ?? null);
 
             $errors = $validator->validate($user);
             if(count($errors) > 0) {
