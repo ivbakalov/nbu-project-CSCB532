@@ -22,36 +22,49 @@ def move_data(mysql_connection, ms_access_connection):
     access_cursor = ms_access_connection.cursor()
 
     for table in tables_for_moving:
+     print(table)
         # MySQL Query
      select_query = f"SELECT * FROM {table}"
-    
+
     # Fetch records from MySQL
      mysql_cursor = mysql_connection.cursor()
      mysql_cursor.execute(select_query)
+     
+     column_names = [desc[0] for desc in mysql_cursor.description]
+     columns_to_remove = ['referrer']
+     new_column_names = column_names
+
+     indexes_to_fetch = []
+     for column_to_remove in columns_to_remove:
+          if column_to_remove in column_names:
+           new_column_names = [col for col in column_names if col != column_to_remove]
+           indexes_to_fetch = [column_names.index(col) for col in new_column_names]
+
+
      for row in mysql_cursor.fetchall():
-        # Check if the record already exists in MS Access
-        
+        print(row)   
         if record_exists(access_cursor, table, tables_for_moving[table], row[0]):
           continue
 
-        column_names = []
-        #  mysql_cursor.execute(select_query + table)
-        for column in mysql_cursor.description:
-          column_name = column[0]
-          column_names.append(column_name)
+        new_record = row
+       
+        if len(indexes_to_fetch)>0:
+         new_record = tuple(row[i] for i in indexes_to_fetch)
+        
+         
 
-           
-        columns = ", ".join(str(element) for element in column_names)
-        data = (("?"+", ")*(len(row)-1))+ "?"
-
+        columns = ", ".join(str(element) for element in new_column_names)
+        
+        data  = (("?"+", ")*(len(new_record)-1))+ "?"
+              
             # Insert the record into MS Access
         insert_query = f"INSERT INTO {table} ({columns}) VALUES ({data})"
         try:
-         access_cursor.execute(insert_query, row)
+         access_cursor.execute(insert_query, new_record)
          ms_access_connection.commit()
         except Exception as e:
          print(f"An error occurred: {e}\n")
-     
+           
 def main():
  
     # MySQL Connection
