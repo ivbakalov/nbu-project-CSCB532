@@ -3,7 +3,11 @@
 }
 
 .section-2.animation-show {
-  display: flex;
+  display: block;
+  .section {
+    display: flex;
+  }
+
   animation: slideLeftShow 0.5s ease-in-out forwards;
   animation-delay: 400ms;
 }

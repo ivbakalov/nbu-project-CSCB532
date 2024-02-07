@@ -4,6 +4,11 @@ import { nextSlide } from "./utilities";
 import { Loading } from "./loading";
 
 export async function survey() {
+  document.querySelector("body").classList.add("section-3-body");
+  //   document.addEventListener("scroll", (event) => {
+  //   console.log(455454);
+  // });
+
   openDraggableMobile();
 
   if (User.instance.value.surveys && User.instance.value.surveys.length > 0) {
@@ -214,10 +219,13 @@ export async function completeSurvey() {
           "PATCH",
           { ...User.instance.value.activeSurvey, completed: true }
         );
+
         nextSlide();
       } catch (error) {
       } finally {
-        loading.hide();
+        setTimeout(() => {
+          loading.hide();
+        }, 1000);
       }
     });
 }

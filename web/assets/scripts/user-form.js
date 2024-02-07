@@ -29,7 +29,6 @@ export async function formOne() {
       nextSlide();
 
       if (await getUser(email)) {
-        console.log("user exists");
         nextSlide();
       }
     }
@@ -111,8 +110,8 @@ export function nationalitySelect() {
 function convertToProperTypes(data) {
   return {
     country: data?.toString(),
-    education:data?.toString(),
-    email:data?.toString(),
+    education: data?.toString(),
+    email: data?.toString(),
     englishLevel: Number(data),
     gender: Number(data),
     nativeLanguage: data?.toString(),
@@ -125,17 +124,17 @@ function registerUser() {
   const referrer = sessionStorage.getItem("referrer");
 
   let data = {
-      ...(referrer ? {referrer} : '')
+    ...(referrer ? { referrer } : ""),
   };
 
   document.querySelectorAll("[data-form-name]").forEach((element) => {
     const { formName, index } = element.dataset;
 
-   if (element.type === "radio" || element.type === "checkbox") {
-     if (element.checked) {
-       console.log(formName, element);
-       data = { ...data, [formName]: convertToProperTypes(index)[formName] };
-     }
+    if (element.type === "radio" || element.type === "checkbox") {
+      if (element.checked) {
+        console.log(formName, element);
+        data = { ...data, [formName]: convertToProperTypes(index)[formName] };
+      }
     } else {
       const convertedData = convertToProperTypes(element.value)[formName];
 
@@ -178,7 +177,6 @@ async function getUser(email) {
   let userResponse = {};
 
   try {
-
     userResponse = await http(`user/${email}`, "GET", "", false);
 
     if (userResponse) {

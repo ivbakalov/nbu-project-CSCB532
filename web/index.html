@@ -17,17 +17,20 @@
         <span class="mif-spinner2 ani-pulse"></span>
     </div>
 </div>
-<body id="body" >
+<body id="body">
 
-<div class="sections section-1">
+<div class="section-1">
+    <div class="sections">
     <div class="d-flex-md flex-content-center mt-0-md mt-8">
         <div class="w-100 w-50-md">
             <h2>Text-Emotion Survey</h2>
             <p>Text evokes emotions in its readers.</p>
-            <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary works.</p>
+            <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary
+                works.</p>
             <p>
                 You will be asked to group together the texts that create similar emotions in you.
             </p>
+            <p>Consider emotional properties such as pleasant, unpleasant, exciting and so on.</p>
             <p> This survey is anonymous.
             </p>
             <p> For the purposes of language emotion analysis, you will be asked to specify your native language.
@@ -39,36 +42,50 @@
         </div>
         <div class="w-100 w-50-md d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
             <form class="w-100 w-75-md" id="form-1" data-role="validator" action="javascript:">
-                    <div class="flex w-100 ml-auto mr-auto">
-                        <input type="email" data-role="materialinput"
-                               class="mail-input"
-                               data-icon="<span class='mif-envelop'>"
-                               data-label="Email"
-                               data-form-name="email"
-                               data-informer="Enter an email address"
-                               data-validate="required email"
-                               placeholder="Enter an email address"
-                        >
-                        <span class="validation email-validation">Please enter a valid email address!</span>
+                <div class="flex w-100 ml-auto mr-auto">
+                    <input type="email" data-role="materialinput"
+                           class="mail-input"
+                           data-icon="<span class='mif-envelop'>"
+                           data-label="Email"
+                           data-form-name="email"
+                           data-informer="Enter an email address"
+                           data-validate="required email"
+                           placeholder="Enter an email address"
+                    >
+                    <span class="validation email-validation">Please enter a valid email address!</span>
 
-                        <div class="flex button-wrapper w-100">
-                            <button class="mt-2 button primary rounded">Submit</button>
-                        </div>
+                    <div class="flex button-wrapper w-100">
+                        <button class="mt-2 button primary rounded">Submit</button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
+        </div>
+    <footer class="pt-2 mt-10 d-flex flex-content-center flex-justify-center flex-wrap w-100">
+        <div class="pt-2 d-flex flex-content-center flex-wrap">
+            <img class="mr-2 mt-2" src="/assets/images/nbu.jpeg">
+            <div>
+                <a href="https://computerscience.nbu.bg/" target="_blank" class="pt-1">©2024 New Bulgarian University</a>
+                <br>
+                <span> <a href="https://computerscience.nbu.bg/" target="_blank">Department of computer since</a></span>
+            </div>
+        </div>
+    </footer>
 </div>
 
-<div class="sections section-2">
+<div class="section-2">
+    <div class="sections">
     <div class="w-100 d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
         <div class="w-100 w-50-md">
             <h2>Text-Emotion Survey</h2>
             <p>Text evokes emotions in its readers.</p>
-            <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary works.</p>
+            <p>You will be asked to read eight texts in English. These are one-page excerpts from famous literary
+                works.</p>
             <p>
                 You will be asked to group together the texts that create similar emotions in you.
             </p>
+            <p>Consider emotional properties such as pleasant, unpleasant, exciting and so on.</p>
             <p> This survey is anonymous.
             </p>
             <p> For the purposes of language emotion analysis, you will be asked to specify your native language.
@@ -79,154 +96,184 @@
             <p> Are you willing to participate in the Text Emotion Survey?</p>
         </div>
         <div class="w-100 w-50-md d-flex-md flex-align-center-md flex-justify-center-md mt-0-md mt-8">
-        <form class="w-100 w-75-md" id="form-2" data-role="validator" action="javascript:">
-            <h3>The native language option is requared!</h3>
-            <div class="d-flex-md mt-3">
-            <select class="nationality-select mr-3-md" data-form-name="country"></select>
+            <form class="w-100 w-75-md" id="form-2" data-role="validator" action="javascript:">
+                <h3>The native language option is requared!</h3>
+                <div class="d-flex-md mt-3">
+                    <select class="nationality-select mr-3-md" data-form-name="country"></select>
 
-            <div class="mt-2 mt-0-md w-100 section-2-select">
-                <select class="languages-select" data-form-name="nativeLanguage"></select>
-                <span class="required">Required *</span>
-                <span class="validation languages-validation">Please provide a value!</span>
-            </div>
+                    <div class="mt-2 mt-0-md w-100 section-2-select">
+                        <select class="languages-select" data-form-name="nativeLanguage"></select>
+                        <span class="required">Required *</span>
+                        <span class="validation languages-validation">Please provide a value!</span>
+                    </div>
 
-            </div>
-            <div class="d-flex-md mt-3">
-                <select class="mr-3-md" data-role="select" data-form-name="englishLevel">
-                    <option value="">English level</option>
-                    <option value="0">0 - No Proficiency</option>
-                    <option value="1">1 - Elementary Proficiency</option>
-                    <option value="2">2 - Limited Working Proficiency</option>
-                    <option value="3">3 - Professional Proficiency</option>
-                    <option value="4">4 - Full Professional Proficiency</option>
-                    <option value="5">5 - Native / Bilingual Proficiency</option>
-                </select>
+                </div>
+                <div class="d-flex-md mt-3">
+                    <select class="mr-3-md" data-role="select" data-form-name="englishLevel">
+                        <option value="">English level</option>
+                        <option value="0">0 - No Proficiency</option>
+                        <option value="1">1 - Elementary Proficiency</option>
+                        <option value="2">2 - Limited Working Proficiency</option>
+                        <option value="3">3 - Professional Proficiency</option>
+                        <option value="4">4 - Full Professional Proficiency</option>
+                        <option value="5">5 - Native / Bilingual Proficiency</option>
+                    </select>
 
-                <select class="mt-2 mt-0-md" data-role="select" data-form-name="education">
-                    <option value="">Highest completed education level</option>
-                    <option value="0">High School</option>
-                    <option value="1">Bachelors Degree</option>
-                    <option value="2">Masters Degree</option>
-                    <option value="3">Doctorate or Higher</option>
-                    <option value="4">Other</option>
-                </select>
-            </div>
-            <div class="mt-3 text-right">
-                <div class="gender-title-wrapper"><span>Gender</span></div>
-                <input type="radio"
-                       name="gender-radio"
-                       data-role="radio"
-                       data-style="2"
-                       data-index="0"
-                       data-caption="Male"
-                       data-form-name="gender"
-                       data-cls-check="myCheck">
-                <input type="radio"
-                       name="gender-radio"
-                       data-role="radio"
-                       data-index="1"
-                       data-style="2"
-                       data-caption="Female"
-                       data-form-name="gender"
-                       data-cls-check="myCheck">
-                <input type="radio" checked
-                       name="gender-radio"
-                       data-role="radio"
-                       data-index="2"
-                       data-style="2"
-                       data-caption="Prefer not to say"
-                       data-form-name="gender"
-                       data-cls-check="myCheck">
+                    <select class="mt-2 mt-0-md" data-role="select" data-form-name="education">
+                        <option value="">Highest completed education level</option>
+                        <option value="0">High School</option>
+                        <option value="1">Bachelors Degree</option>
+                        <option value="2">Masters Degree</option>
+                        <option value="3">Doctorate or Higher</option>
+                        <option value="4">Other</option>
+                    </select>
+                </div>
+                <div class="mt-3 text-right">
+                    <div class="gender-title-wrapper"><span>Gender</span></div>
+                    <input type="radio"
+                           name="gender-radio"
+                           data-role="radio"
+                           data-style="2"
+                           data-index="0"
+                           data-caption="Male"
+                           data-form-name="gender"
+                           data-cls-check="myCheck">
+                    <input type="radio"
+                           name="gender-radio"
+                           data-role="radio"
+                           data-index="1"
+                           data-style="2"
+                           data-caption="Female"
+                           data-form-name="gender"
+                           data-cls-check="myCheck">
+                    <input type="radio" checked
+                           name="gender-radio"
+                           data-role="radio"
+                           data-index="2"
+                           data-style="2"
+                           data-caption="Prefer not to say"
+                           data-form-name="gender"
+                           data-cls-check="myCheck">
 
-            </div>
-            <div class="mt-1 mb-2 text-right check-box-agree" >
-                <input type="checkbox" data-role="checkbox" name="interested-in-moreInfo" data-form-name="interestedInMoreInfo" data-caption="I'm interested in receiving notifications about the results">
-            </div>
+                </div>
+                <div class="mt-1 mb-2 text-right check-box-agree">
+                    <input type="checkbox" data-role="checkbox" name="interested-in-moreInfo"
+                           data-form-name="interestedInMoreInfo"
+                           data-caption="I'm interested in receiving notifications about the results">
+                </div>
 
-            <div class="flex button-wrapper w-100">
-                <button class="mt-2 button primary rounded">Register</button>
-            </div>
-        </form>
+                <div class="flex button-wrapper w-100">
+                    <button class="mt-2 button primary rounded">Register</button>
+                </div>
+            </form>
         </div>
     </div>
+    </div>
+
+    <footer class="pt-2 mt-10 d-flex flex-content-center flex-justify-center flex-wrap w-100">
+        <div class="pt-2 d-flex flex-content-center flex-wrap">
+            <img class="mr-2 mt-2" src="/assets/images/nbu.jpeg">
+            <div>
+                <a href="https://computerscience.nbu.bg/" target="_blank" class="pt-1">©2024 New Bulgarian University</a>
+                <br>
+                <span> <a href="https://computerscience.nbu.bg/" target="_blank">Department of computer since</a></span>
+            </div>
+        </div>
+    </footer>
 </div>
 
-<div class="sections section-3 ">
-    <button class="mt-1 button primary rounded text-upper d-flex flex-align-center text-bold logout-button">logout</button>
-    <div class="pb-5">
-        <div class="title">
-            <h2>Text-Emotion Survey</h2>
-            <p class="text-just">
-                Click on <span class="mif-info"></span> icon to read the full quote.  <br><br>
-                Group the texts by how similar they are according to the emotions they evoked in you. The groups are not labeled intentionally, as the texts may invoke different emotions in each reader.
-                <br>
-                <br>
-                To put texts in the same group drag them to the same container below. You can assign the texts to a maximum of <strong>5 groups (1 to 5)</strong>. You can change the group you have assigned a text to by dragging it to another container. Your progress is automatically saved on each drop, so you can return later to continue.
-            </p>
-        </div>
-        <div class="texts"></div>
-        <div class="drag-wrapper mb-10">
-            <button class="mt-2 button primary rounded open-drag-1 open-drag">1</button>
-            <button class="mt-2 button primary rounded open-drag-2 open-drag">2</button>
-            <button class="mt-2 button primary rounded open-drag-3 open-drag">3</button>
-            <button class="mt-2 button primary rounded open-drag-4 open-drag">4</button>
-            <button class="mt-2 button primary rounded open-drag-5 open-drag">5</button>
-        </div>
-        <div class="drag-wrapper">
-            <div class="drag drag-one">
-                <h4>Drop here</h4>
-                <ul data-role="drag-items" data-text-group-id="1" class="drag-items-moved-target">
-                </ul>
+<div class="section-3">
+    <div class="sections">
+        <button class="mt-1 button primary rounded text-upper d-flex flex-align-center text-bold logout-button">logout
+        </button>
+        <div class="pb-5">
+            <div class="title">
+                <h2>Text-Emotion Survey</h2>
+                <p class="text-just">
+                    Click on <span class="mif-info"></span> icon to read the full quote. <br><br>
+                    Group the texts by how similar they are according to the emotions they evoked in you. The groups are not
+                    labeled intentionally, as the texts may invoke different emotions in each reader.
+                    <br>
+                    <br>
+                    To put texts in the same group drag them to the same container below. You can assign the texts to a
+                    maximum of <strong>5 groups (1 to 5)</strong>. You can change the group you have assigned a text to by
+                    dragging it to another container. Your progress is automatically saved on each drop, so you can return
+                    later to continue.
+                </p>
             </div>
-            <div class="drag drag-two">
-                <h4>Drop here</h4>
-                <ul data-role="drag-items" data-text-group-id="2" class="drag-items-moved-target">
-                </ul>
+            <div class="texts"></div>
+            <div class="drag-wrapper mb-10">
+                <button class="mt-2 button primary rounded open-drag-1 open-drag">1</button>
+                <button class="mt-2 button primary rounded open-drag-2 open-drag">2</button>
+                <button class="mt-2 button primary rounded open-drag-3 open-drag">3</button>
+                <button class="mt-2 button primary rounded open-drag-4 open-drag">4</button>
+                <button class="mt-2 button primary rounded open-drag-5 open-drag">5</button>
             </div>
-            <div class="drag drag-three">
-                <h4>Drop here</h4>
-                <ul data-role="drag-items" data-text-group-id="3" class="drag-items-moved-target">
-                </ul>
-            </div>
-            <div class="drag drag-four">
-                <h4>Drop here</h4>
-                <ul data-role="drag-items" data-text-group-id="4" class="drag-items-moved-target">
-                </ul>
-            </div>
-            <div class="drag drag-five">
-                <h4>Drop here</h4>
-                <ul data-role="drag-items" data-text-group-id="5" class="drag-items-moved-target">
-                </ul>
+            <div class="drag-wrapper">
+                <div class="drag drag-one">
+                    <h4>Drop here</h4>
+                    <ul data-role="drag-items" data-text-group-id="1" class="drag-items-moved-target">
+                    </ul>
+                </div>
+                <div class="drag drag-two">
+                    <h4>Drop here</h4>
+                    <ul data-role="drag-items" data-text-group-id="2" class="drag-items-moved-target">
+                    </ul>
+                </div>
+                <div class="drag drag-three">
+                    <h4>Drop here</h4>
+                    <ul data-role="drag-items" data-text-group-id="3" class="drag-items-moved-target">
+                    </ul>
+                </div>
+                <div class="drag drag-four">
+                    <h4>Drop here</h4>
+                    <ul data-role="drag-items" data-text-group-id="4" class="drag-items-moved-target">
+                    </ul>
+                </div>
+                <div class="drag drag-five">
+                    <h4>Drop here</h4>
+                    <ul data-role="drag-items" data-text-group-id="5" class="drag-items-moved-target">
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+    <footer class="pt-2 mt-10 d-flex flex-content-center flex-justify-center flex-wrap w-100">
+        <div class="pt-2 d-flex flex-content-center flex-wrap">
+            <img class="mr-2 mt-2" src="/assets/images/nbu.jpeg">
+            <div>
+                <a href="https://computerscience.nbu.bg/" target="_blank" class="pt-1">©2024 New Bulgarian University</a>
+                <br>
+                <span> <a href="https://computerscience.nbu.bg/" target="_blank">Department of computer since</a></span>
+            </div>
+        </div>
+    </footer>
 </div>
 
 <div class="survey-completed-next pos-fixed">
     <div class="flex button-wrapper w-100">
-        <button class="button primary rounded complete-survey-btn text-upper d-flex flex-align-center text-bold"> <span class="mif-user-check mif-3x mr-2"></span>  Complete the survey</button>
+        <button class="button primary rounded complete-survey-btn text-upper d-flex flex-align-center text-bold"><span
+                class="mif-user-check mif-3x mr-2"></span> Complete the survey
+        </button>
     </div>
 </div>
 
-<div class="sections section-4 pt-5 pb-5">
+<div class="section-4 pt-5 pb-5">
+    <div class="sections">
     <div class="title">
         <h2>Thank you</h2>
-            <p>
-                for participating in the Text Emotion Survey!
-                Your responses have been recorded.
-            </p>
-            <p>
-               Do you want to participate in another one?
-            </p>
-            <button class="mt-2 button primary rounded text-upper" onclick="window.location.reload()">new survey</button>
+        <p>
+            For participating in the Text Emotion Survey!
+            Your responses have been recorded.
+        </p>
+        <p>
+            Do you want to participate in another one?
+        </p>
+        <button class="mt-2 button primary rounded text-upper" onclick="window.location.reload()">new survey</button>
+    </div>
     </div>
 </div>
 
-<footer class="mt-10 d-flex flex-content-center flex-justify-center flex-wrap">
-<div  class="d-flex flex-content-center flex-wrap">
-    <img class="mr-2" src="/assets/images/nbu.jpeg">
-    <a href="https://www.nbu.bg/" target="_blank" class="pt-1">©2024 New Bulgarian University</a>
-</div>
-</footer>
+
 </body>
 </html>
