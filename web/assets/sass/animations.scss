@@ -1,5 +1,6 @@
 .section-1.animation-hide {
   animation: slideLeftHide 0.5s ease-in-out forwards;
+  display: none;
 }
 
 .section-2.animation-show {
@@ -10,6 +11,7 @@
 
 .section-2.animation-hide {
   animation: slideUpShowHide 0.5s ease-in-out forwards;
+  display: none;
 }
 
 .section-3.animation-show {
