@@ -28,7 +28,8 @@ class UserCrudController extends AbstractCrudController
             'gender',
             'education',
             CountryField::new('country'),
-            BooleanField::new('interestedInMore')->renderAsSwitch(false),
+            BooleanField::new('interestedInMoreInfo')->renderAsSwitch(false),
+            'referrer',
         ];
     }
 

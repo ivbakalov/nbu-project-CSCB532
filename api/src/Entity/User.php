@@ -42,13 +42,18 @@ class User
     #[ORM\Column(length: 255, nullable: true, name: 'Education')]
     private ?string $education = null;
 
+    #[Assert\NotBlank(allowNull: true)]
+    #[Assert\Length(max: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $referrer = null;
+
     #[Assert\Country]
     #[Assert\NotBlank(allowNull: true)]
     #[Assert\Length(max: 255)]
     #[ORM\Column(length: 255, nullable: true, name: "Country")]
     private ?string $country = null;
 
-    #[ORM\Column(nullable: true, name: 'IsInterestedInMore')]
+    #[ORM\Column(nullable: true, name: 'IsInterestedInMoreInfo')]
     private ?bool $interestedInMoreInfo = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Survey::class, orphanRemoval: true)]
@@ -116,6 +121,18 @@ class User
     public function setEducation(?string $education): static
     {
         $this->education = $education;
+
+        return $this;
+    }
+
+    public function getReferrer(): ?string
+    {
+        return $this->referrer;
+    }
+
+    public function setReferrer(?string $referrer): static
+    {
+        $this->referrer = $referrer;
 
         return $this;
     }
