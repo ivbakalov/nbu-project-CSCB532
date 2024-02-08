@@ -164,13 +164,13 @@ function addDraggableItems(
     Metro.dialog.open(`#dialog-${index}`);
   });
 
-  const h6 = document.createElement("h6");
+  // const h6 = document.createElement("h6");
   //h6.textContent = author;
   const div = document.createElement("div");
 
   const p = document.createElement("p");
   p.textContent = `${text.slice(0, 65)}...`;
-  div.append(h6, p);
+  div.append(p);
 
   li.append(button, div);
 
